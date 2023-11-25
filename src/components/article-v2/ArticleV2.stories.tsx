@@ -1,9 +1,9 @@
 import { ComponentMeta } from '@storybook/react';
 
-import { Article as ArticleComponent, ArticleProps } from './Article';
+import { ArticleV2 as ArticleComponent, ArticleV2Props } from './ArticleV2';
 
 export default {
-  title: 'Article',
+  title: 'ArticleV2',
   component: ArticleComponent,
   argTypes: {
     author: {
@@ -23,23 +23,8 @@ export default {
         type: 'text'
       },
       defaultValue: 'https://picsum.photos/600/400',
-    },
-    traffic: {
-      control: {
-        type: 'number'
-      },
-      defaultValue: 12345,
-    },
-    id: {
-      control: {
-        type: 'text'
-      },
-      defaultValue: 'c0281ed3-160d-4be0-acc7-1dd9a62a4f78',
-    },
-    navigate: {
-      action: true,
     }
   },
 } as ComponentMeta<typeof ArticleComponent>;
 
-export const article = (args: ArticleProps) => <ArticleComponent { ...args } />;
+export const articleV2 = (args: ArticleV2Props) => <ArticleComponent { ...args } />;

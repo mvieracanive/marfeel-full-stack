@@ -1,12 +1,9 @@
-import * as React from 'react';
+import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { NavigateFunction } from 'react-router-dom';
-import { article } from '../../router/routes';
-import { styled } from '@mui/material';
 
 const Value = styled(Typography)`
   align-self: center;
@@ -14,34 +11,27 @@ const Value = styled(Typography)`
   padding: 0 8px;
 `;
 
-export type ArticleProps = {
-  id: string,
+export type ArticleV2Props = {
   author: string;
   url: string;
   image: string;
   traffic: number;
-  navigate: NavigateFunction
 };
 
-export const Article = ({ author, url, image, traffic, navigate, id }: ArticleProps) => {
+export const ArticleV2 = ({ author, url, image }: ArticleV2Props) => {
 
   return (
     <Card
             sx={{
               display: 'flex',
+              justifyContent: 'space-between',
               mb: 1,
-              paddingRight: '6px',
-              '&:hover': {
-                cursor: 'pointer'
-              }
+              border: 'none',
+              paddingRight:
+              '6px'
             }}
-            variant='outlined'
-            onClick = { () => navigate(article(id)) } >
-      <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image={ image }
-      />
+            variant='outlined' >
+      
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
@@ -52,9 +42,11 @@ export const Article = ({ author, url, image, traffic, navigate, id }: ArticlePr
           </Typography>
         </CardContent>
       </Box>
-      <Value variant="h4">
-            { traffic }
-      </Value>
+      <CardMedia
+        component="img"
+        sx={{ width: 151 }}
+        image={ image }
+      />
     </Card>
   );
 }

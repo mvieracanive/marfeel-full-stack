@@ -1,18 +1,23 @@
 import React, { PropsWithChildren } from 'react';
 import Box from '@mui/material/Box';
 import { AppBar } from '../app-bar';
+import { AppGlobalState } from '../../App';
 
-export const BaseLayout = ({ children }: PropsWithChildren<{}>) => {
+export const BaseLayout = (props: PropsWithChildren<Pick<AppGlobalState, 'onSelectorChangeHandler'>>) => {
+  const {
+    children,
+    ...restProps
+  } = props
+
   return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBar title='Traffic' />
+    <Box sx={{ display: 'flex', height: '100vh' }}>
+      <AppBar title='Traffic' { ...restProps } />
       <Box
           component="main"
           sx={{
             flexGrow: 1,
-            height: '100vh',
             overflow: 'auto',
-            marginTop: '64px'
+            marginTop: '82px'
           }}
         >
           { children }
